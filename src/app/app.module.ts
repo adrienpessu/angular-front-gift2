@@ -9,6 +9,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list/list.component';
@@ -19,6 +20,10 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
+  { path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
   { path: 'login', component: LoginComponent },
   { path: 'group/:groupId', component: ListComponent },
   { path: 'group/:groupId/list/:memberId', component: ListComponent },
@@ -47,7 +52,8 @@ const appRoutes: Routes = [
     MatListModule,
     MatIconModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

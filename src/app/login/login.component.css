@@ -1,0 +1,9 @@
+.scrollable{
+  margin-top: 80px;
+  z-index: 2;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
