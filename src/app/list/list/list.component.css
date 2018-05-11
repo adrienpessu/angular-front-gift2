@@ -1,0 +1,21 @@
+
+.main-card{
+    margin: 1rem;
+}
+
+.hide {
+    display: none;
+}
+
+.scrollable{
+    margin-top: 80px;
+    z-index: 2;
+}
+
+.item-img{
+    height: 3rem;
+}
+
+.pointer{
+    cursor: pointer;
+}

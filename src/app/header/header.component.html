@@ -1,0 +1,19 @@
+<mat-toolbar class="contener-toolbar">
+  <div class="item"> 
+    <div class="contener-logo">
+      <div class="logo-menu"><button mat-button>Liste de noël</button></div>
+    </div>
+  </div>
+  <div class="item"> 
+    <div class="title-menu">Liste d'Éline</div>
+  </div>
+  <div class="item">
+    <div class="contener-profile">
+      <button class="button-menu" mat-button [matMenuTriggerFor]="menu">Adrien</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Admininistration</button>
+        <button mat-menu-item>Déconnection</button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
