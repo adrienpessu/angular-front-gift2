@@ -15,7 +15,6 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './list/list/list.component';
 import { ConfirmDialogComponent } from './list/confirm-dialog/confirm-dialog.component';
 import { DetailItemDialogComponent } from './list/detail-item-dialog/detail-item-dialog.component';
-import { ItemComponent } from './list/item/item.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 
@@ -35,7 +34,6 @@ const appRoutes: Routes = [
     ListComponent,
     ConfirmDialogComponent,
     DetailItemDialogComponent,
-    ItemComponent,
     LoginComponent,
     HeaderComponent
   ],
@@ -56,6 +54,7 @@ const appRoutes: Routes = [
     MatInputModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DetailItemDialogComponent, ConfirmDialogComponent]
 })
 export class AppModule { }

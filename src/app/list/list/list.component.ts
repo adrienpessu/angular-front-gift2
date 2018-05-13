@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {DetailItemDialogComponent} from '../detail-item-dialog/detail-item-dialog.component'
 
 @Component({
   selector: 'app-list',
@@ -32,7 +34,7 @@ export class ListComponent implements OnInit {
     },
     {
       'label': 'xbox',
-      'checked': false
+      'checked': true
     },    {
       'label': 'gameboy',
       'description' : 'Awsum game',
@@ -112,7 +114,19 @@ export class ListComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
+
+  editDialog(currentItem: ItemList): void {
+    console.log('dialog : ' + currentItem);
+    const dialogRef = this.dialog.open(DetailItemDialogComponent, {
+      width: '250px',
+      data: {item: currentItem}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
+  }
 
   ngOnInit() {
   }

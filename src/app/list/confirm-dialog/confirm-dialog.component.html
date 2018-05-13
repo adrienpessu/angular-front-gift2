@@ -1,3 +1,13 @@
-<p>
-  confirm-dialog works!
-</p>
+<h1 mat-dialog-title>Confirmation</h1>
+
+Êtes-vous sûr de selectionner ce cadeau? <br/>
+Une fois validé, il ne sera plus selectionnable par quelqu'un d'autre.
+
+<div mat-dialog-actions>
+  <button mat-button (click)="valider()" color="primary">
+    Valider!
+  </button>
+  <button mat-button (click)="dialogRef.close()">
+    Cancel
+  </button>
+</div>

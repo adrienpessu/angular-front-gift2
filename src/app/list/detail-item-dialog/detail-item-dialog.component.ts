@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Inject, Input} from '@angular/core';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-detail-item-dialog',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailItemDialogComponent implements OnInit {
 
-  constructor() { }
+  item: ItemList;
+
+  constructor(
+    public dialogRef: MatDialogRef<DetailItemDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  valider() {
+    this.dialogRef.close();
+  }
 
   ngOnInit() {
+    this.item = this.data.item;
   }
 
 }
