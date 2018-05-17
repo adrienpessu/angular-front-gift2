@@ -1,0 +1,44 @@
+
+mat-toolbar{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+.contener-toolbar{
+    display: flex;
+    justify-content: right;
+}
+
+.contener-logo{
+    display: flex; 
+    justify-content: left;
+    width: 100%;
+}
+
+.contener-profile{
+    display: flex; 
+    justify-content: right;
+    width: 100%;
+}
+
+.contener-toolbar .item {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+    width: 100%;
+}
+
+.button-menu{
+    color: white;
+}
+
+.logo-menu{
+    color: white;
+    cursor: pointer;
+}
+
+.title-menu {
+    color: white;
+    cursor: pointer;
+}

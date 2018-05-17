@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Edition de {{item.label}}</h1>
+
+  <mat-form-field>
+    <input matInput placeholder="Libellé" [(ngModel)]="item.label">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Description" [(ngModel)]="item.description">
+  </mat-form-field>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="valider()" color="primary">
+    Valider!
+  </button>
+  <button mat-button (click)="dialogRef.close()">
+    Cancel
+  </button>
+</div>
