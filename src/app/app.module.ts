@@ -17,6 +17,7 @@ import { ConfirmDialogComponent } from './list/confirm-dialog/confirm-dialog.com
 import { DetailItemDialogComponent } from './list/detail-item-dialog/detail-item-dialog.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '',
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
     MatIconModule,
     MatCardModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

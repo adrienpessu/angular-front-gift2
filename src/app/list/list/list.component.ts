@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {DetailItemDialogComponent} from '../detail-item-dialog/detail-item-dialog.component'
+import {DetailItemDialogComponent} from '../detail-item-dialog/detail-item-dialog.component';
+import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-list',
@@ -117,8 +118,18 @@ export class ListComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   editDialog(currentItem: ItemList): void {
-    console.log('dialog : ' + currentItem);
     const dialogRef = this.dialog.open(DetailItemDialogComponent, {
+      width: '250px',
+      data: {item: currentItem}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
+  }
+
+  confimDialog(currentItem: ItemList): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '250px',
       data: {item: currentItem}
     });
