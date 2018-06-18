@@ -18,15 +18,16 @@ import { DetailItemDialogComponent } from './list/detail-item-dialog/detail-item
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
+import { ListGuard } from './list.guard';
+import { ListService } from './list/list/list.service';
 
 const appRoutes: Routes = [
   { path: '',
     redirectTo: '/login',
     pathMatch: 'full'
   },
-  { path: 'login', component: LoginComponent },
-  { path: 'group/:groupId', component: ListComponent },
-  { path: 'group/:groupId/list/:memberId', component: ListComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'list/:groupId/:memberId', component: ListComponent, canActivate: [ListGuard]  },
 ];
 
 @NgModule({
@@ -55,7 +56,7 @@ const appRoutes: Routes = [
     MatInputModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ListGuard, ListService],
   bootstrap: [AppComponent],
   entryComponents: [DetailItemDialogComponent, ConfirmDialogComponent]
 })
