@@ -57,7 +57,7 @@ export class LoginService {
 
   getToken() {
     if (!this.token) {
-      localStorage.getItem('token');
+      this.token = localStorage.getItem('token');
     }
     if (!this.token) {
       return null;

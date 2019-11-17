@@ -10,23 +10,21 @@ mat-toolbar{
 }
 
 .contener-logo{
-    display: flex; 
+    display: flex;
     justify-content: left;
     width: 100%;
 }
 
 .contener-profile{
-    display: flex; 
+    display: flex;
     justify-content: right;
     width: 100%;
 }
 
 .contener-toolbar .item {
     display: flex;
-    justify-content: center;
     flex-grow: 1;
     text-align: center;
-    width: 100%;
 }
 
 .button-menu{
