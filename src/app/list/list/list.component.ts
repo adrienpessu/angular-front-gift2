@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material';
-import {DetailItemDialogComponent} from '../detail-item-dialog/detail-item-dialog.component';
-import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material';
+import { DetailItemDialogComponent } from '../detail-item-dialog/detail-item-dialog.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ListService } from './list.service';
 
 
@@ -40,7 +40,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.gifts = this.listService.getGifts();
+    this.gifts = this.listService.getGiftsDefaults()
   }
 
 }

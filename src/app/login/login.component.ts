@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { LoginService } from './login.service';
+import { take } from 'rxjs/operators';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,18 +10,38 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  user = '';
+  password = '';
+
   constructor(
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
-
-
-  login() {
-    this.router.navigate(['/list', 'adrien', 'eline']);
+    private router: Router,
+    private loginService: LoginService
+  ) {
   }
 
+  login() {
+    this.loginService.generateToken(this.user, this.password).pipe(take(1)).subscribe(
+      result => {
+        if (result) {
+          this.router.navigate(['/list', 'adrien', 'eline']);
+        }
+      }, err => {
+        console.log('Erreur de login');
+        this.loginService.deleteToken();
+      }
+    );
+  }
+
+  changePassword(evt) {
+    this.password = evt.target.value;
+  }
 
   ngOnInit() {
+    this.route.params
+      .subscribe((params: Params) => {
+        this.user = params['user'] || 'invite';
+      });
   }
 
 }

@@ -7,7 +7,11 @@ export class ListService {
 
   constructor() { }
 
-  getGifts(){
+  getGifts() {
+
+  }
+
+  getGiftsDefaults(){
     return [
       {
         'label': 'playstation 4',

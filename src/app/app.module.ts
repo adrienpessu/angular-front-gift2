@@ -1,15 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatMenuModule} from '@angular/material/menu';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatCardModule} from '@angular/material/card';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list/list.component';
@@ -20,14 +20,17 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { ListGuard } from './list.guard';
 import { ListService } from './list/list/list.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
-  { path: '',
+  {
+    path: '',
     redirectTo: '/login',
     pathMatch: 'full'
   },
-  { path: 'login', component: LoginComponent},
-  { path: 'list/:groupId/:memberId', component: ListComponent, canActivate: [ListGuard]  },
+  { path: 'login', component: LoginComponent },
+  { path: 'login/:user', component: LoginComponent },
+  { path: 'list/:groupId/:memberId', component: ListComponent, canActivate: [ListGuard] }
 ];
 
 @NgModule({
@@ -45,6 +48,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
+    HttpClientModule,
     MatToolbarModule,
     MatMenuModule,
     BrowserAnimationsModule,
@@ -60,4 +64,5 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent],
   entryComponents: [DetailItemDialogComponent, ConfirmDialogComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

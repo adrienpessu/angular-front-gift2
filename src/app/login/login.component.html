@@ -3,11 +3,7 @@
     <form>
       <div class="container-vertical">
         <mat-form-field>
-            <input type="text" readonly matInput placeholder="Login" value="invité"/>
-          <mat-icon matSuffix>account_circle</mat-icon>
-        </mat-form-field>
-        <mat-form-field>
-          <input type="password" matInput placeholder="Mot de passe"/>
+          <input type="password" (change)="changePassword($event)" matInput placeholder="Mot de passe"/>
           <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
         <button (click)="login()" mat-button>Entrer</button>
