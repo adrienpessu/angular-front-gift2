@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { DetailItemDialogComponent } from '../detail-item-dialog/detail-item-dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ListService } from './list.service';
+import { take } from 'rxjs/operators';
 
 
 @Component({
@@ -40,6 +41,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.listService.getGifts('adrien').pipe(take(1)).subscribe(result => this.gifts = result)
     this.gifts = this.listService.getGiftsDefaults()
   }
 

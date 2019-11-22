@@ -1,8 +1,11 @@
 interface ItemList {
     label: string;
     description?: string;
-    img?: string;
-    imgUrl?: string;
+    childId?: string;
+    url?: string;
+    url2?: string;
+    url3?: string;
+    pics?: string;
     checked?: boolean;
     santaName?: string;
     checkedDate?: Date;

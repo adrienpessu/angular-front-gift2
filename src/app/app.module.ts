@@ -20,7 +20,8 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { ListGuard } from './list.guard';
 import { ListService } from './list/list/list.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 
 const appRoutes: Routes = [
   {
@@ -60,7 +61,12 @@ const appRoutes: Routes = [
     MatInputModule,
     FormsModule
   ],
-  providers: [ListGuard, ListService],
+  providers: [ListGuard, ListService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   entryComponents: [DetailItemDialogComponent, ConfirmDialogComponent]
 })
