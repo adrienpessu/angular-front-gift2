@@ -1,13 +1,21 @@
-<h1 mat-dialog-title>Confirmation</h1>
+<h2 mat-dialog-title>Confirmation</h2>
+<mat-dialog-content>
+  <p mat-line matLine>
+    Après votre confirmation, ce présent ne sera plus selectionnable par une autre personne.
+  </p>
+  <p>
+    Si vous le souhaitez, vous pouvez mettre votre nom :
+  </p>
+  <mat-form-field >
+    <input matInput placeholder="Votre nom" value="">
+  </mat-form-field>
 
-Êtes-vous sûr de selectionner ce cadeau? <br/>
-Une fois validé, il ne sera plus selectionnable par quelqu'un d'autre.
-
-<div mat-dialog-actions>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
   <button mat-button (click)="valider()" color="primary">
     Valider!
   </button>
   <button mat-button (click)="dialogRef.close()">
     Cancel
   </button>
-</div>
+</mat-dialog-actions>

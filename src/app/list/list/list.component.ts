@@ -5,6 +5,7 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 import { ListService } from './list.service';
 import { filter, take } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
+import { LoginService } from '../../login/login.service';
 
 
 @Component({
@@ -16,7 +17,10 @@ export class ListComponent implements OnInit {
 
   gifts: ItemList[] = [];
 
-  constructor(public dialog: MatDialog, private listService: ListService, private router: Router) {
+  admin = false;
+
+  constructor(public dialog: MatDialog, private listService: ListService, private router: Router, private loginService: LoginService) {
+    this.admin = this.loginService.hasRole('admin')
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(({ urlAfterRedirects }: NavigationEnd) => {
@@ -32,7 +36,7 @@ export class ListComponent implements OnInit {
   editDialog(currentItem: ItemList): void {
     const dialogRef = this.dialog.open(DetailItemDialogComponent, {
       width: '250px',
-      data: { item: currentItem }
+      data: { item: currentItem}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -42,7 +46,7 @@ export class ListComponent implements OnInit {
 
   confimDialog(currentItem: ItemList): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '250px',
+      width: '350px',
       data: { item: currentItem }
     });
 

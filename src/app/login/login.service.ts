@@ -27,6 +27,10 @@ export class LoginService {
     }));
   }
 
+  hasRole (role: string) {
+    return jwt_decode(this.getToken()).role === role;
+  }
+
   getTokenExpirationDate(token: string): Date {
     const decoded = jwt_decode(token);
 
