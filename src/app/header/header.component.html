@@ -9,11 +9,9 @@
   </div>
   <div>
     <div class="contener-profile">
-      <button class="button-menu" mat-button [matMenuTriggerFor]="menu">Adrien</button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Admininistration</button>
-        <button mat-menu-item (click)="disconnect()" >Déconnection</button>
-      </mat-menu>
+      <button *ngIf="!isLogin" mat-menu-item (click)="disconnect()" >
+        <mat-icon class="button-menu">exit_to_app</mat-icon>
+      </button>
     </div>
   </div>
 </mat-toolbar>

@@ -28,7 +28,8 @@ mat-toolbar{
 }
 
 .button-menu{
-    color: white;
+  color: white;
+  cursor: pointer;
 }
 
 .logo-menu{

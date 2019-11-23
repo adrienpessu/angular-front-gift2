@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login/login.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +10,24 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  isLogin = false;
+
+  constructor(private loginService: LoginService, private router: Router) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(({ urlAfterRedirects }: NavigationEnd) => {
+        const url = urlAfterRedirects.split(';')[0];
+        this.isLogin = url === '/login';
+        console.log(url);
+      });
+  }
 
   disconnect() {
     this.loginService.deleteToken();
     this.router.navigate(['/login']);
   }
+
+
 
   ngOnInit() {
   }
