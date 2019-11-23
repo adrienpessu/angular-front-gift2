@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { take } from 'rxjs/operators';
+import { ReferentielService } from '../shared/service/referentiel.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private referentielService: ReferentielService
   ) {
   }
 
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.loginService.generateToken(this.user, this.password).pipe(take(1)).subscribe(
       result => {
         if (result) {
-          this.router.navigate(['/list', 'adrien', 'eline']);
+          this.router.navigate(['/list', this.referentielService.getChilds()[0].id]);
         }
       }, err => {
         console.log('Erreur de login');

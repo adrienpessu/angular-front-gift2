@@ -41,3 +41,34 @@ mat-toolbar{
     color: white;
     cursor: pointer;
 }
+
+div.button-menu-parent.active {
+  border-bottom-color: white;
+  border-bottom-style: groove;
+  border-bottom-width: 3px;
+  font-size: medium;
+}
+
+.contener-toolbar div.header-icon.item{
+  display: none;
+  justify-content: center;
+  align-content: center;
+}
+
+@media screen and (max-width: 740px) {
+  .menu-button {
+    display:none;
+  }
+  .menu-list {
+    display:flex;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 740px){
+  .menu-button {
+    display:flex;
+  }
+  .menu-list {
+    display:none;
+  }
+}

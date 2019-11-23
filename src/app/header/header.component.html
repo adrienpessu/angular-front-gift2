@@ -1,11 +1,26 @@
 <mat-toolbar class="contener-toolbar">
+  <div *ngIf="!isLogin" class="item header-icon">
+    <div class="menu-list">
+      <button mat-button [matMenuTriggerFor]="menulist"><mat-icon>menu</mat-icon>{{menuName}}</button>
+      <mat-menu #menulist="matMenu">
+        <ng-container *ngFor="let menu of childs">
+          <button class="button-menu" *ngIf="menu.display" mat-menu-item [routerLink]="menu.link">{{menu.name}}</button>
+        </ng-container>
+      </mat-menu>
+    </div>
+    <button class="home" mat-button routerLink="/">
+      <img class="logo" src="./assets/img/logo-couleur-RVB.svg">
+    </button>
+  </div>
   <div class="item">
     <div class="contener-logo">
       <div class="logo-menu"><button mat-button>Liste de noël</button></div>
     </div>
   </div>
-  <div class="item">
-    <div class="title-menu">Liste d'Éline</div>
+  <div *ngIf="!isLogin" class="item menu-button">
+    <div class="button-menu-parent" *ngFor="let menu of childs" [ngClass]="menu.active ? 'active' : ''">
+      <button mat-button class="button-menu" (click)="goToChild(menu)" >{{menu.name}}</button>
+    </div>
   </div>
   <div>
     <div class="contener-profile">

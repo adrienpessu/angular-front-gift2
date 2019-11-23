@@ -31,7 +31,7 @@ const appRoutes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'login/:user', component: LoginComponent },
-  { path: 'list/:groupId/:memberId', component: ListComponent, canActivate: [ListGuard] }
+  { path: 'list/:memberId', component: ListComponent, canActivate: [ListGuard] }
 ];
 
 @NgModule({
