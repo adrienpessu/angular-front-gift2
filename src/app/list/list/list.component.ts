@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material';
 import { DetailItemDialogComponent } from '../detail-item-dialog/detail-item-dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ListService } from './list.service';
-import { take } from 'rxjs/operators';
+import { filter, take } from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
 
 
 @Component({
@@ -15,13 +16,23 @@ export class ListComponent implements OnInit {
 
   gifts: ItemList[] = [];
 
-  constructor(public dialog: MatDialog,
-    private listService: ListService) { }
+  constructor(public dialog: MatDialog, private listService: ListService, private router: Router) {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(({ urlAfterRedirects }: NavigationEnd) => {
+        const url = urlAfterRedirects.split(';')[0];
+        if (urlAfterRedirects.startsWith('/list')) {
+          const childId = urlAfterRedirects.split('/')[urlAfterRedirects.split('/').length - 1];
+          this.loadGifts(childId);
+        }
+        console.log(url);
+      });
+  }
 
   editDialog(currentItem: ItemList): void {
     const dialogRef = this.dialog.open(DetailItemDialogComponent, {
       width: '250px',
-      data: {item: currentItem}
+      data: { item: currentItem }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -32,7 +43,7 @@ export class ListComponent implements OnInit {
   confimDialog(currentItem: ItemList): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '250px',
-      data: {item: currentItem}
+      data: { item: currentItem }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -40,9 +51,11 @@ export class ListComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.listService.getGifts('adrien').pipe(take(1)).subscribe(result => this.gifts = result)
-    this.gifts = this.listService.getGiftsDefaults()
+  private loadGifts(childId) {
+    this.listService.getGifts(childId).pipe(take(1)).subscribe(result => this.gifts = result);
   }
 
+  ngOnInit() {
+
+  }
 }
