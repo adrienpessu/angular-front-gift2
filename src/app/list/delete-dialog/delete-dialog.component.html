@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Confirmation</h2>
+<mat-dialog-content>
+  <p mat-line matLine>
+    Êtes-vous sûr de vouloir supprimer
+  </p>
+  <h3>{{data.item.label}}</h3>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="valider()" color="primary">
+    Supprimer!
+  </button>
+  <button mat-button (click)="dialogRef.close()">
+    Annuler
+  </button>
+</mat-dialog-actions>

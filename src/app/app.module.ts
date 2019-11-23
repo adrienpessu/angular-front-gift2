@@ -22,6 +22,7 @@ import { ListGuard } from './list.guard';
 import { ListService } from './list/list/list.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './shared/interceptor/token.interceptor';
+import { DeleteDialogComponent } from './list/delete-dialog/delete-dialog.component';
 
 const appRoutes: Routes = [
   {
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     ConfirmDialogComponent,
     DetailItemDialogComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    DeleteDialogComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -68,7 +70,7 @@ const appRoutes: Routes = [
       multi: true
     }],
   bootstrap: [AppComponent],
-  entryComponents: [DetailItemDialogComponent, ConfirmDialogComponent]
+  entryComponents: [DetailItemDialogComponent, ConfirmDialogComponent, DeleteDialogComponent]
 })
 export class AppModule {
 }

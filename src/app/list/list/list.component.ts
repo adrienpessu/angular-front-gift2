@@ -6,6 +6,7 @@ import { ListService } from './list.service';
 import { filter, take } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { LoginService } from '../../login/login.service';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 
 @Component({
@@ -45,7 +46,7 @@ export class ListComponent implements OnInit {
   }
 
   deleteDialog(currentItem: ItemList): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '250px',
       data: { item: currentItem}
     });
