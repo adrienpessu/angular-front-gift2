@@ -44,6 +44,17 @@ export class ListComponent implements OnInit {
     });
   }
 
+  deleteDialog(currentItem: ItemList): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '250px',
+      data: { item: currentItem}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
+  }
+
   confimDialog(currentItem: ItemList): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '350px',
