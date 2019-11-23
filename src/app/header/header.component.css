@@ -49,26 +49,25 @@ div.button-menu-parent.active {
   font-size: medium;
 }
 
-.contener-toolbar div.header-icon.item{
-  display: none;
+.contener-toolbar div.header-icon{
   justify-content: center;
   align-content: center;
 }
 
 @media screen and (max-width: 740px) {
-  .menu-button {
+  .contener-toolbar div.item.menu-button {
     display:none;
   }
-  .menu-list {
+  .contener-toolbar div.header-icon {
     display:flex;
     flex-direction: column;
   }
 }
 @media screen and (min-width: 740px){
-  .menu-button {
+  .contener-toolbar div.item.menu-button {
     display:flex;
   }
-  .menu-list {
+  .contener-toolbar div.header-icon {
     display:none;
   }
 }
