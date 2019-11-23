@@ -13,12 +13,10 @@ export class DeleteDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
   valider() {
-    this.dialogRef.close();
+    this.dialogRef.close({
+      confirm: true
+    });
   }
 
   ngOnInit() {

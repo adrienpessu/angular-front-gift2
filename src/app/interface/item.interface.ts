@@ -1,4 +1,5 @@
 interface ItemList {
+    id: string;
     label: string;
     description?: string;
     childId?: string;

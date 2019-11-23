@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
   admin = false;
 
   constructor(public dialog: MatDialog, private listService: ListService, private router: Router, private loginService: LoginService) {
-    this.admin = this.loginService.hasRole('admin')
+    this.admin = this.loginService.hasRole('admin');
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(({ urlAfterRedirects }: NavigationEnd) => {
@@ -37,7 +37,7 @@ export class ListComponent implements OnInit {
   editDialog(currentItem: ItemList): void {
     const dialogRef = this.dialog.open(DetailItemDialogComponent, {
       width: '250px',
-      data: { item: currentItem}
+      data: { item: currentItem }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -48,11 +48,11 @@ export class ListComponent implements OnInit {
   deleteDialog(currentItem: ItemList): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '250px',
-      data: { item: currentItem}
+      data: { item: currentItem }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+      this.listService.deleteGift(currentItem.id).pipe(take(1)).subscribe(res => this.gifts = this.gifts.filter(item => item.id !== currentItem.id));
     });
   }
 
