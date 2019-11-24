@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material';
 import { DetailItemDialogComponent } from '../detail-item-dialog/detail-item-dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ListService } from './list.service';
-import { filter, take } from 'rxjs/operators';
+import { filter, flatMap, take } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { LoginService } from '../../login/login.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
@@ -40,7 +40,7 @@ export class ListComponent implements OnInit {
       data: { item: currentItem }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().pipe(take(1), filter(res => res && res.confirm)).subscribe(result => {
       console.log('The dialog was closed', result);
     });
   }
@@ -51,8 +51,8 @@ export class ListComponent implements OnInit {
       data: { item: currentItem }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.listService.deleteGift(currentItem.id).pipe(take(1)).subscribe(res => this.gifts = this.gifts.filter(item => item.id !== currentItem.id));
+    dialogRef.afterClosed().pipe(take(1), filter(res => res && res.confirm), flatMap(result => this.listService.deleteGift(currentItem.id))).subscribe(result => {
+      this.gifts = this.gifts.filter(item => item.id !== currentItem.id);
     });
   }
 
@@ -62,9 +62,19 @@ export class ListComponent implements OnInit {
       data: { item: currentItem }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-    });
+    dialogRef.afterClosed().pipe(take(1), flatMap(result => this.listService.putGift({
+      ...currentItem,
+      santaName: result.santaName
+    })))
+      .subscribe(result => {
+        this.gifts = this.gifts.map(item => {
+          if (item.id === currentItem.id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+      });
   }
 
   private loadGifts(childId) {

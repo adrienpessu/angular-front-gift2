@@ -7,7 +7,7 @@
     Si vous le souhaitez, vous pouvez mettre votre nom :
   </p>
   <mat-form-field >
-    <input matInput placeholder="Votre nom" value="">
+    <input (change)="changeSantaName($event)" matInput placeholder="Votre nom" value="">
   </mat-form-field>
 
 </mat-dialog-content>

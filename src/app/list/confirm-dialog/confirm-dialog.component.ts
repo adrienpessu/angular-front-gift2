@@ -8,17 +8,22 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 })
 export class ConfirmDialogComponent implements OnInit {
 
+  santaName: string = ''
+
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  changeSantaName(event) {
+    this.santaName = event.target.value;
   }
 
   valider() {
-    this.dialogRef.close();
+    this.dialogRef.close({
+      confirm: true,
+      santaName: this.santaName ? this.santaName : 'le père noël'
+    });
   }
 
   ngOnInit() {
