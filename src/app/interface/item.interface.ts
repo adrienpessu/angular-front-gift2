@@ -7,8 +7,8 @@ interface ItemList {
     url2?: string;
     url3?: string;
     pics?: string;
-    checked?: boolean;
     santaName?: string;
+    checked?: boolean;
     checkedDate?: Date;
     creationDate?: Date;
 }

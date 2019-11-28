@@ -1,14 +1,24 @@
-<h1 mat-dialog-title>Edition de {{item.label}}</h1>
+<h1 mat-dialog-title>Edition de {{label}}</h1>
+<form [formGroup]="giftForm">
+  <div class="form">
+    <mat-form-field>
+      <input matInput placeholder="Libellé" formControlName="label">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Url" formControlName="url">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Url 2" formControlName="url2">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Url 3" formControlName="url3">
+    </mat-form-field>
+  </div>
+</form>
 
-  <mat-form-field>
-    <input matInput placeholder="Libellé" [(ngModel)]="item.label">
-  </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Description" [(ngModel)]="item.description">
-  </mat-form-field>
 
-<div mat-dialog-actions>
+<div mat-dialog-actions align="end">
   <button mat-button (click)="valider()" color="primary">
     Valider!
   </button>

@@ -3,8 +3,8 @@
     <mat-list>
       <h3 mat-subheader>Pour cocher un cadeau, il suffit de cliquer sur l'icône <mat-icon mat-list-icon>check_box_outline_blank</mat-icon></h3>
       <mat-list-item *ngFor="let gift of gifts; let last = last">
-        <mat-icon class="pointer" mat-list-icon *ngIf="gift.santaName">check_box</mat-icon>
-        <mat-icon class="pointer" (click)="confimDialog(gift)" mat-list-icon *ngIf="!gift.santaName">check_box_outline_blank</mat-icon>
+        <mat-icon class="pointer" (click)="confimDialog(gift, false)" mat-list-icon *ngIf="gift.santaName">check_box</mat-icon>
+        <mat-icon class="pointer" (click)="confimDialog(gift, true)" mat-list-icon *ngIf="!gift.santaName">check_box_outline_blank</mat-icon>
         <mat-icon class="pointer" *ngIf="admin && !gift.santaName" (click)="editDialog(gift)" mat-list-icon>edit</mat-icon>
         <mat-icon class="pointer" *ngIf="admin && !gift.santaName" (click)="deleteDialog(gift)" mat-list-icon>delete</mat-icon>
         <h4 mat-line>{{gift.label}}</h4>

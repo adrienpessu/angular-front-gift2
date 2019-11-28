@@ -17,7 +17,7 @@ import { ConfirmDialogComponent } from './list/confirm-dialog/confirm-dialog.com
 import { DetailItemDialogComponent } from './list/detail-item-dialog/detail-item-dialog.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListGuard } from './list.guard';
 import { ListService } from './list/list/list.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -61,7 +61,8 @@ const appRoutes: Routes = [
     MatCardModule,
     MatDialogModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ListGuard, ListService,
     {

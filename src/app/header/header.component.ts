@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(({ urlAfterRedirects }: NavigationEnd) => {
         const url = urlAfterRedirects.split(';')[0];
-        this.isLogin = url === '/login';
+        this.isLogin = url.startsWith('/login');
         this.childs.forEach(menu => {
           if (menu.link === '/list') {
             this.router.navigate(['/list', this.referentielService.getChilds()[0].id]);

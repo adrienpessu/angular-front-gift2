@@ -36,12 +36,22 @@ export class ListComponent implements OnInit {
 
   editDialog(currentItem: ItemList): void {
     const dialogRef = this.dialog.open(DetailItemDialogComponent, {
-      width: '250px',
+      width: '550px',
       data: { item: currentItem }
     });
 
-    dialogRef.afterClosed().pipe(take(1), filter(res => res && res.confirm)).subscribe(result => {
-      console.log('The dialog was closed', result);
+    dialogRef.afterClosed().pipe(
+      take(1),
+      filter(res => res),
+      flatMap(result => this.listService.putGift(result))
+    ).subscribe(result => {
+      this.gifts = this.gifts.map(item => {
+        if (item.id === currentItem.id) {
+          return result;
+        } else {
+          return item;
+        }
+      });
     });
   }
 
@@ -56,17 +66,28 @@ export class ListComponent implements OnInit {
     });
   }
 
-  confimDialog(currentItem: ItemList): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '350px',
-      data: { item: currentItem }
-    });
+  confimDialog(currentItem: ItemList, check: boolean): void {
+    if (check) {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '350px',
+        data: { item: currentItem, check: check }
+      });
 
-    dialogRef.afterClosed().pipe(take(1), flatMap(result => this.listService.putGift({
-      ...currentItem,
-      santaName: result.santaName
-    })))
-      .subscribe(result => {
+      dialogRef.afterClosed().pipe(take(1), flatMap(result => this.listService.putGift({
+        ...currentItem,
+        santaName: result.santaName
+      })))
+        .subscribe(result => {
+          this.gifts = this.gifts.map(item => {
+            if (item.id === currentItem.id) {
+              return result;
+            } else {
+              return item;
+            }
+          });
+        });
+    } else {
+      this.listService.putGift({...currentItem, santaName: ''}).subscribe(result => {
         this.gifts = this.gifts.map(item => {
           if (item.id === currentItem.id) {
             return result;
@@ -75,6 +96,7 @@ export class ListComponent implements OnInit {
           }
         });
       });
+    }
   }
 
   private loadGifts(childId) {
