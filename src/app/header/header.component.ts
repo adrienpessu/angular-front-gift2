@@ -12,6 +12,7 @@ import { ReferentielService } from '../shared/service/referentiel.service';
 export class HeaderComponent implements OnInit {
 
   isLogin = false;
+  isLoginAdmin = false;
 
   childs = [];
   menuName = '';
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(({ urlAfterRedirects }: NavigationEnd) => {
         const url = urlAfterRedirects.split(';')[0];
         this.isLogin = url.startsWith('/login');
+        this.isLoginAdmin = url.startsWith('/login/admin');
         this.childs.forEach(menu => {
           if (menu.link === '/list') {
             this.router.navigate(['/list', this.referentielService.getChilds()[0].id]);
@@ -33,13 +35,20 @@ export class HeaderComponent implements OnInit {
             }
           }
         });
-        console.log(url);
       });
   }
 
   disconnect() {
     this.loginService.deleteToken();
     this.router.navigate(['/login']);
+  }
+
+  userChange() {
+    if(this.isLoginAdmin) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/login/admin']);
+    }
   }
 
   goToChild(menu) {

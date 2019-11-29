@@ -24,6 +24,10 @@
       <button *ngIf="!isLogin" mat-menu-item (click)="disconnect()" >
         <mat-icon class="button-menu">exit_to_app</mat-icon>
       </button>
+      <button *ngIf="isLogin" mat-menu-item (click)="userChange()" >
+        <mat-icon *ngIf="!isLoginAdmin" class="button-menu">lock</mat-icon>
+        <mat-icon *ngIf="isLoginAdmin" class="button-menu">lock_open</mat-icon>
+      </button>
     </div>
   </div>
 </mat-toolbar>
