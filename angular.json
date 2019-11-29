@@ -11,9 +11,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "glob": "_redirects",
-            "input": "src",
-            "output": "/",
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -21,7 +18,12 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.png"
+              "src/favicon.png",
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.css"
