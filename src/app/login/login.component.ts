@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   user = '';
   password = '';
+  error = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
         }
       }, err => {
         console.log('Erreur de login');
+        this.error = true;
         this.loginService.deleteToken();
       }
     );
