@@ -7,6 +7,7 @@ import { filter, flatMap, take } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { LoginService } from '../../login/login.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -64,6 +65,23 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().pipe(take(1), filter(res => res && res.confirm), flatMap(result => this.listService.deleteGift(currentItem.id))).subscribe(result => {
       this.gifts = this.gifts.filter(item => item.id !== currentItem.id);
     });
+  }
+
+  drop(event) {
+    moveItemInArray(this.gifts, event.previousIndex, event.currentIndex);
+    for (let index = 0; index < this.gifts.length; index++) {
+      const gift = this.gifts[index];
+      this.listService
+        .putGift({ ...gift, ordre: index })
+        .pipe(take(1))
+        .subscribe(
+          result => {
+            console.log('reorder');
+          },
+          err =>
+            console.error('api error')
+        );
+    }
   }
 
   confimDialog(currentItem: ItemList, check: boolean): void {

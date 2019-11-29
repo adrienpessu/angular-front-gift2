@@ -1,13 +1,15 @@
 <div class="scrollable">
   <mat-card class="main-card">
-    <mat-list>
+    <mat-list cdkDropList (cdkDropListDropped)="drop($event)">
       <h3 mat-subheader>Pour cocher un cadeau, il suffit de cliquer sur l'icône <mat-icon mat-list-icon>check_box_outline_blank</mat-icon></h3>
-      <mat-list-item *ngFor="let gift of gifts; let last = last">
+      <mat-list-item *ngFor="let gift of gifts; let last = last" cdkDrag>
+        <mat-icon class="mover"  *ngIf="admin" cdkDragHandle mat-list-icon>drag_indicator</mat-icon>
         <mat-icon class="pointer" (click)="confimDialog(gift, false)" mat-list-icon *ngIf="gift.santaName">check_box</mat-icon>
         <mat-icon class="pointer" (click)="confimDialog(gift, true)" mat-list-icon *ngIf="!gift.santaName">check_box_outline_blank</mat-icon>
         <mat-icon class="pointer" *ngIf="admin && !gift.santaName" (click)="editDialog(gift)" mat-list-icon>edit</mat-icon>
         <mat-icon class="pointer" *ngIf="admin && !gift.santaName" (click)="deleteDialog(gift)" mat-list-icon>delete</mat-icon>
         <h4 mat-line>{{gift.label}}</h4>
+        <span *cdkDragPreview>{{gift.label}}</span>
         <p mat-line *ngIf="gift.santaName">Déjà sélectionné par <i>{{gift.santaName}}</i></p>
         <p mat-line *ngIf="gift.url"><a [href]="gift.url"> {{gift.url}} </a></p>
         <p mat-line *ngIf="gift.url2"><a [href]="gift.url2"> {{gift.url2}} </a></p>
