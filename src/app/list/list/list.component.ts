@@ -86,7 +86,7 @@ export class ListComponent implements OnInit {
             }
           });
         });
-    } else {
+    } else if(this.loginService.hasRole('admin')) {
       this.listService.putGift({...currentItem, santaName: ''}).subscribe(result => {
         this.gifts = this.gifts.map(item => {
           if (item.id === currentItem.id) {
