@@ -1,4 +1,5 @@
-<h1 mat-dialog-title>Edition de {{label}}</h1>
+<h1 mat-dialog-title *ngIf="!data['new']">Edition de {{label}}</h1>
+<h1 mat-dialog-title *ngIf="data['new']">Nouveau</h1>
 <form [formGroup]="giftForm">
   <div class="form">
     <mat-form-field>

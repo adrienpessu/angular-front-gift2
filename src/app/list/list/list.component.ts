@@ -18,6 +18,7 @@ import { moveItemInArray } from '@angular/cdk/drag-drop';
 export class ListComponent implements OnInit {
 
   gifts: ItemList[] = [];
+  childId = '';
 
   admin = false;
 
@@ -28,8 +29,8 @@ export class ListComponent implements OnInit {
       .subscribe(({ urlAfterRedirects }: NavigationEnd) => {
         const url = urlAfterRedirects.split(';')[0];
         if (urlAfterRedirects.startsWith('/list')) {
-          const childId = urlAfterRedirects.split('/')[urlAfterRedirects.split('/').length - 1];
-          this.loadGifts(childId);
+          this.childId = urlAfterRedirects.split('/')[urlAfterRedirects.split('/').length - 1];
+          this.loadGifts(this.childId);
         }
         console.log(url);
       });
@@ -65,6 +66,21 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().pipe(take(1), filter(res => res && res.confirm), flatMap(result => this.listService.deleteGift(currentItem.id))).subscribe(result => {
       this.gifts = this.gifts.filter(item => item.id !== currentItem.id);
     });
+  }
+
+  add() {
+    const dialogRef = this.dialog.open(DetailItemDialogComponent, {
+      width: '550px',
+      data: { new: true, item: {childId: this.childId} }
+    });
+
+    dialogRef.afterClosed().pipe(
+      take(1),
+      filter(res => res),
+      flatMap(result => this.listService.postGift(result))
+    ).subscribe(result =>
+      this.gifts.push(result)
+    );
   }
 
   drop(event) {
@@ -104,8 +120,8 @@ export class ListComponent implements OnInit {
             }
           });
         });
-    } else if(this.loginService.hasRole('admin')) {
-      this.listService.putGift({...currentItem, santaName: ''}).subscribe(result => {
+    } else if (this.loginService.hasRole('admin')) {
+      this.listService.putGift({ ...currentItem, santaName: '' }).subscribe(result => {
         this.gifts = this.gifts.map(item => {
           if (item.id === currentItem.id) {
             return result;

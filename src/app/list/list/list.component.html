@@ -19,4 +19,9 @@
       </mat-list-item>
     </mat-list>
   </mat-card>
+  <div *ngIf="admin" class="btn-add">
+    <button class="button-bottom" mat-fab (click)="add()">
+      <mat-icon aria-label="Ajouter un cadeau">add</mat-icon>
+    </button>
+  </div>
 </div>
