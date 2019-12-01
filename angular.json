@@ -19,6 +19,7 @@
             "assets": [
               "src/assets",
               "src/favicon.png",
+              "src/manifest.json",
               {
                 "glob": "_redirects",
                 "input": "src",

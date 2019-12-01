@@ -11,9 +11,9 @@
         <h4 mat-line>{{gift.label}}</h4>
         <span *cdkDragPreview>{{gift.label}}</span>
         <p mat-line *ngIf="gift.santaName">Déjà sélectionné par <i>{{gift.santaName}}</i></p>
-        <p mat-line *ngIf="gift.url"><a [href]="gift.url"> {{gift.url}} </a></p>
-        <p mat-line *ngIf="gift.url2"><a [href]="gift.url2"> {{gift.url2}} </a></p>
-        <p mat-line *ngIf="gift.url3"><a [href]="gift.url3"> {{gift.url3}} </a></p>
+        <p mat-line *ngIf="gift.url"><a rel="noopener noreferrer" target="_blank" [href]="gift.url"> {{gift.url}} </a></p>
+        <p mat-line *ngIf="gift.url2"><a rel="noopener noreferrer" target="_blank" [href]="gift.url2"> {{gift.url2}} </a></p>
+        <p mat-line *ngIf="gift.url3"><a rel="noopener noreferrer" target="_blank" [href]="gift.url3"> {{gift.url3}} </a></p>
         <img class="item-img" *ngIf="gift.pics" [src]="gift.pics">
         <mat-divider *ngIf="!last"></mat-divider>
       </mat-list-item>
