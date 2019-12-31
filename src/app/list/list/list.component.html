@@ -1,6 +1,6 @@
 <div class="scrollable">
   <mat-card class="main-card">
-    <mat-list cdkDropList (cdkDropListDropped)="drop($event)">
+    <mat-list cdkDropList [cdkDropListDisabled]="!admin" (cdkDropListDropped)="drop($event)">
       <h3 mat-subheader>Pour cocher un cadeau, il suffit de cliquer sur l'icône <mat-icon mat-list-icon>check_box_outline_blank</mat-icon></h3>
       <mat-list-item *ngFor="let gift of gifts; let last = last" cdkDrag>
         <mat-icon class="mover"  *ngIf="admin" cdkDragHandle mat-list-icon>drag_indicator</mat-icon>
