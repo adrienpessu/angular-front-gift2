@@ -13,7 +13,7 @@ export class ReferentielService {
       {
         'id': 'yaelle',
         'name': 'Yaelle'
-      },
+      }/*,
       {
         'id': 'eline',
         'name': 'Eline'
@@ -25,7 +25,7 @@ export class ReferentielService {
       {
         'id': 'adrien',
         'name': 'Adrien'
-      }
+      }*/
     ];
 
   }
