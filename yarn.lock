@@ -10,7 +10,7 @@
     "@angular-devkit/core" "8.3.21"
     rxjs "6.4.0"
 
-"@angular-devkit/build-angular@~0.803.20":
+"@angular-devkit/build-angular@~0.803.21":
   version "0.803.21"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-0.803.21.tgz#f3d12ea09748b05eb2d835a7de7997599fb6b752"
   integrity sha512-flfgflvfpwdsm3x/U7QnfbtyZPEbsVipzQAoao1Zo58Beq1a+NsKsWbjrF/x4TSoI2czt0OVWXNytlfXM7LMhg==
@@ -127,7 +127,7 @@
   optionalDependencies:
     parse5 "^5.0.0"
 
-"@angular/cli@~8.3.20":
+"@angular/cli@~8.3.21":
   version "8.3.21"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-8.3.21.tgz#cbb05b86b7f34ecd81d52ccad922359e66a16a15"
   integrity sha512-ZZpA7mMfIobFT06rBNxm8vucAh8W2s0huJZ4iL0BPujnhIr71PL+gDwssySWDEz2q6i4CkH9QRH76DHhtL6VSQ==
@@ -4375,6 +4375,11 @@ istanbul-reports@^1.5.1:
   dependencies:
     handlebars "^4.0.3"
 
+jasmine-core@^3.5.0, jasmine-core@~3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.5.0.tgz#132c23e645af96d85c8bca13c8758b18429fc1e4"
+  integrity sha512-nCeAiw37MIMA9w9IXso7bRaLl+c/ef3wnxsoSAlYrzS+Ot0zTG6nU8G/cIfGkqpkjX2wNaIW9RFG0TwIFnG6bA==
+
 jasmine-core@~2.8.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-2.8.0.tgz#bcc979ae1f9fd05701e45e52e65d3a5d63f1a24e"
@@ -4395,6 +4400,14 @@ jasmine@2.8.0:
     exit "^0.1.2"
     glob "^7.0.6"
     jasmine-core "~2.8.0"
+
+jasmine@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/jasmine/-/jasmine-3.5.0.tgz#7101eabfd043a1fc82ac24e0ab6ec56081357f9e"
+  integrity sha512-DYypSryORqzsGoMazemIHUfMkXM7I7easFaxAvNM3Mr6Xz3Fy36TupTrAOxZWN8MVKEU5xECv22J4tUQf3uBzQ==
+  dependencies:
+    glob "^7.1.4"
+    jasmine-core "~3.5.0"
 
 jasminewd2@^2.1.0:
   version "2.2.0"
@@ -4556,10 +4569,18 @@ karma-jasmine-html-reporter@^0.2.2:
   dependencies:
     karma-jasmine "^1.0.2"
 
-karma-jasmine@^1.0.2, karma-jasmine@^1.1.2:
+karma-jasmine@^1.0.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-1.1.2.tgz#394f2b25ffb4a644b9ada6f22d443e2fd08886c3"
   integrity sha1-OU8rJf+0pkS5rabyLUQ+L9CIhsM=
+
+karma-jasmine@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-3.0.1.tgz#55a13cc7878f67ece42a2fdb1210a301ed9783b4"
+  integrity sha512-LOCtzyOQq5NUH6OSH77mQv0bG0ua3oX3Im3AVRB7JC8YEa8tW4UDpFgM3rZ/YtJO9OhUO+awa3zuRj/+WA2qyA==
+  dependencies:
+    jasmine "^3.5.0"
+    jasmine-core "^3.5.0"
 
 karma-source-map-support@1.4.0:
   version "1.4.0"
@@ -6429,10 +6450,17 @@ rxjs@^5.0.1:
   dependencies:
     symbol-observable "1.0.1"
 
-rxjs@^6.4.0, rxjs@^6.5.3:
+rxjs@^6.4.0:
   version "6.5.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.3.tgz#510e26317f4db91a7eb1de77d9dd9ba0a4899a3a"
   integrity sha512-wuYsAYYFdWTAnAaPoKGNhfpWwKZbJW+HgAJ+mImp+Epl7BG8oNWBCTyRM8gba9k4lk8BgWdoYm21Mo/RYhhbgA==
+  dependencies:
+    tslib "^1.9.0"
+
+rxjs@^6.5.4:
+  version "6.5.4"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.4.tgz#e0777fe0d184cec7872df147f303572d414e211c"
+  integrity sha512-naMQXcgEo3csAEGvw/NydRA0fuS2nDZJiw1YUWFKU7aPPAPGZEsD4Iimit96qwCieH6y614MCLYwdkrWx7z/7Q==
   dependencies:
     tslib "^1.9.0"
 
