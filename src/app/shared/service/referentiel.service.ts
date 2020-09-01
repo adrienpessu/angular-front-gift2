@@ -10,10 +10,10 @@ export class ReferentielService {
 
   getChilds() {
     return [
-      /*{
+      {
         'id': 'yaelle',
         'name': 'Yaelle'
-      },*/
+      },
       {
         'id': 'eline',
         'name': 'Eline'
@@ -21,11 +21,11 @@ export class ReferentielService {
       {
         'id': 'melanie',
         'name': 'Mélanie'
-      }/*,
+      },
       {
         'id': 'adrien',
         'name': 'Adrien'
-      }*/
+      }
     ];
 
   }
